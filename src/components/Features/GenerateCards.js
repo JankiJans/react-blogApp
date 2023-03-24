@@ -1,5 +1,4 @@
 import {Card, Row, Button, Col} from 'react-bootstrap';
-import { propTypes } from 'react-bootstrap/esm/Image';
 import { useSelector } from 'react-redux';
 import { getAllPosts } from '../../redux/postsRedux';
 
