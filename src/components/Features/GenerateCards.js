@@ -12,7 +12,7 @@ const GenerateCards = () => {
     <Row>
     {posts.map((post) => (
       <Col xs={12} md={6} lg={4} key={post.id} className="my-3">
-        <Card style={{ width: '25rem' }}>
+        <Card>
           <Card.Body>
             <Card.Title>{post.title}</Card.Title>
             <Card.Subtitle className="mb-2 text-muted">{post.publishedDate}</Card.Subtitle>

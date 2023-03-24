@@ -9,7 +9,7 @@ const NavBar = () => {
         <Navbar.Brand href="/">Blog.app</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto flex-md-row">
+          <Nav className="ms-auto flex-md-row">
             <Nav.Link as={NavLink} to="/">Home</Nav.Link>
             <Nav.Link as={NavLink} to="/about">About</Nav.Link>
           </Nav>
