@@ -2,14 +2,32 @@ import { useParams } from 'react-router';
 import { getPostsById } from '../../../redux/postsRedux';
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
-import { Card, Row, Button, Col } from 'react-bootstrap';
+import { Card, Row, Button, Col, Modal } from 'react-bootstrap';
 import SiteTitles from '../../SiteTitles/SiteTitles';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { removeCard } from '../../../redux/postsRedux';
+
 
 const Post = () => {
   const { postId } = useParams();
 
   const renderPostById = useSelector((state) => getPostsById(state, postId));
   console.log(renderPostById);
+
+  //Modal
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  //Remove Function
+  const dispatch = useDispatch();
+  
+  const handleRemove = (e) => {
+    e.preventDefault();
+    dispatch(removeCard(postId));
+  };
 
   if (!renderPostById) return <Navigate to="/" />;
   return (
@@ -21,8 +39,8 @@ const Post = () => {
             <div className="d-flex justify-content-between"> 
               <Card.Title>{renderPostById.title}</Card.Title>
               <div>
-                <Button variant="outline-info" href={`/post/edit/` + renderPostById.id} className="mx-2">Read More</Button>
-                <Button variant="outline-danger" href="#">Delete</Button>
+                <Button variant="outline-info" href={`/post/edit/` + renderPostById.id} className="mx-2">Edit</Button>
+                <Button variant="outline-danger" onClick={handleShow}>Delete</Button>
               </div>
             </div>
             <Card.Subtitle className="mb-2 text-muted">{renderPostById.publishedDate}</Card.Subtitle>
@@ -32,7 +50,19 @@ const Post = () => {
           </Card.Body>
         </Card>
       </Col>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Are you sure?</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>This operation will completly remove post.</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>Close</Button>
+          <Button variant="danger" onClick={handleRemove}>Delete</Button>
+        </Modal.Footer>
+      </Modal>
     </Row>
+
+    
   );
 };
 
