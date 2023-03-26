@@ -2,7 +2,7 @@ import {Card, Row, Button, Col} from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { getAllPosts } from '../../redux/postsRedux';
 
-const GenerateCards = () => {
+const PostList = () => {
 
   const posts = useSelector(getAllPosts);
   console.log(posts);
@@ -28,4 +28,4 @@ const GenerateCards = () => {
   )
 };
 
-export default GenerateCards;
+export default PostList;

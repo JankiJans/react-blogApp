@@ -1,4 +1,4 @@
-import GenerateCards from '../../Features/GenerateCards';
+import PostList from '../../Features/PostList';
 import SiteTitles from '../../SiteTitles/SiteTitles';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
@@ -10,7 +10,7 @@ const Home = () => {
         <SiteTitles>All Posts</SiteTitles>
         <Link to='/post/add'><Button variant="outline-info">Add Post</Button></Link>
       </div>
-      <GenerateCards />
+      <PostList />
     </div>
   );
 };
