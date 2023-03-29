@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Form, Button, Col } from 'react-bootstrap';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { useForm } from 'react-hook-form';
+import styles from './PostForm.style.scss';
 
 const PostForm = ({ action, actionText, ...props }) => { //średnio rozumiem 
   const [title, setTitle] = useState(props.title || '');
@@ -10,7 +11,18 @@ const PostForm = ({ action, actionText, ...props }) => { //średnio rozumiem
   const [author, setAuthor] = useState(props.author || '');
   const [content, setContent] = useState(props.content || '');
 
-  const { register, handleSubmit: validate, formState: { errors } } = useForm();
+  const { register, handleSubmit: validate, formState: { errors }, setValue } = useForm();
+
+  useEffect (() => {
+    register('content', { required: true, minLength: 10});
+  }, [register]);
+
+  const handleContentChange = (editorState) => {
+    setValue("content", editorState);
+    setContent(editorState);
+  };
+
+
 
   const handleSubmit = (e) => {
     action({ title, author, publishedDate, content});
@@ -33,11 +45,10 @@ const PostForm = ({ action, actionText, ...props }) => { //średnio rozumiem
           </Form.Group>
           <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
             <Form.Label><strong>Content</strong></Form.Label>
-            <ReactQuill {...register("content", { required: true, maxLength: 20})} theme="snow"  placeholder='Write something here ...' value={content} onChange={setContent} style={{ height: '150px' }}></ReactQuill>
-              {/* <Form.Control as="textarea" value={content} onChange={(e) => setContent(e.target.value)} rows={5} placeholder="Write something here ..." /> */}   
-              {errors.content && <small className="mt-5 d-block form-text text-danger">This field is required with at least 3 characters and max 20</small>}
+            <ReactQuill className={styles.quill}theme="snow" placeholder='Write something here ...' value={content} onChange={handleContentChange}></ReactQuill> 
+            {errors.content && <small className="d-block form-text text-danger">This field is required with at least 3 characters and max 20</small>}
           </Form.Group>
-          <Button variant="info" type="submit" className="mt-5">Add Post</Button>
+          <Button variant="info" type="submit"className="mt-2">Add Post</Button>
         </Form>
       </Col>
     </div>
