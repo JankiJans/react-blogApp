@@ -44,9 +44,9 @@ const Post = () => {
               </div>
             </div>
             <Card.Subtitle className="mb-2 text-muted">{renderPostById.publishedDate}</Card.Subtitle>
-            <Card.Text className="pt-2 mb-0">
-              <strong>Author:</strong> {renderPostById.author}</Card.Text>
-            <Card.Text dangerouslySetInnerHTML={{ __html: renderPostById.content }}><strong>Description:</strong> {renderPostById.content}</Card.Text>
+            <Card.Text className="pt-2 mb-0"><strong>Author:</strong> {renderPostById.author}</Card.Text>
+            <Card.Text><strong>Description:</strong> {renderPostById.content}</Card.Text>
+            {/* dangerouslySetInnerHTML={{ __html: renderPostById.content }} */}
           </Card.Body>
         </Card>
       </Col>
