@@ -25,17 +25,17 @@ const PostForm = ({ action, actionText, ...props }) => { //średnio rozumiem
             <Form.Control  {...register("title", { required: true, minLength: 3})} type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Enter title" style={{ width: '70%' }} />
             {errors.title && <small className="d-block form-text text-danger">This field is required with at least 3 characters</small>}
             <Form.Label className="pt-3"><strong>Date</strong></Form.Label>
-            <Form.Control {...register("date", { required: true})} type="date" value={publishedDate} onChange={(e) => setPublishedDate(e.target.value)} placeholder="Enter date" style={{ width: '70%' }} />
+            <Form.Control  {...register("date", { required: true, minLength: 3})} type="date" value={publishedDate} onChange={(e) => setPublishedDate(e.target.value)} placeholder="Enter date" style={{ width: '70%' }} />
             {errors.date && <small className="d-block form-text text-danger">This field is required</small>}
             <Form.Label className="pt-3"><strong>Name</strong></Form.Label>
-            <Form.Control {...register("name", { required: true, minLength: 3})} type="text" value={author} onChange={(e) => setAuthor(e.target.value)} placeholder="Enter name" style={{ width: '70%' }} />
-            {errors.name && <small className="d-block form-text text-danger">This field is required with at least 3 characters</small>}
+            <Form.Control {...register("author", { required: true, minLength: 3})} type="text" value={author} onChange={(e) => setAuthor(e.target.value)} placeholder="Enter name" style={{ width: '70%' }} />
+            {errors.author && <small className="d-block form-text text-danger">This field is required with at least 3 characters</small>}
           </Form.Group>
           <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
             <Form.Label><strong>Content</strong></Form.Label>
-            <ReactQuill {...register("name", { required: true, minLength: 3, maxLength: 20})} theme="snow"  placeholder='Write something here ...' value={content} onChange={setContent} style={{ height: '150px' }}></ReactQuill>
+            <ReactQuill {...register("content", { required: true, maxLength: 20})} theme="snow"  placeholder='Write something here ...' value={content} onChange={setContent} style={{ height: '150px' }}></ReactQuill>
               {/* <Form.Control as="textarea" value={content} onChange={(e) => setContent(e.target.value)} rows={5} placeholder="Write something here ..." /> */}   
-              {errors.name && <small className="mt-5 d-block form-text text-danger">This field is required with at least 3 characters and max 20</small>}
+              {errors.content && <small className="mt-5 d-block form-text text-danger">This field is required with at least 3 characters and max 20</small>}
           </Form.Group>
           <Button variant="info" type="submit" className="mt-5">Add Post</Button>
         </Form>
