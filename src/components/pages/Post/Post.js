@@ -46,10 +46,11 @@ const Post = () => {
             <Card.Subtitle className="mb-2 text-muted">{renderPostById.publishedDate}</Card.Subtitle>
             <Card.Text className="pt-2 mb-0">
               <strong>Author:</strong> {renderPostById.author}</Card.Text>
-            <Card.Text><strong>Description:</strong> {renderPostById.content}</Card.Text>
+            <Card.Text dangerouslySetInnerHTML={{ __html: renderPostById.content }}><strong>Description:</strong> {renderPostById.content}</Card.Text>
           </Card.Body>
         </Card>
       </Col>
+
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Are you sure?</Modal.Title>
@@ -67,5 +68,3 @@ const Post = () => {
 };
 
 export default Post;
-
-{/* <Button variant="warning" href={`/post/edit/` + renderPostById.id}>Read More</Button> */}
