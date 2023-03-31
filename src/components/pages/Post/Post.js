@@ -45,6 +45,7 @@ const Post = () => {
             </div>
             <Card.Subtitle className="mb-2 text-muted">{renderPostById.publishedDate}</Card.Subtitle>
             <Card.Text className="pt-2 mb-0"><strong>Author:</strong> {renderPostById.author}</Card.Text>
+            <Card.Text><strong>Category:</strong> {renderPostById.category}</Card.Text>         
             <Card.Text><strong>Description:</strong> {renderPostById.content}</Card.Text>
           </Card.Body>
         </Card>

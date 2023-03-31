@@ -19,7 +19,7 @@ const EditPostForm = () => {
   };
 
   if (!post) return <Navigate to="/" />;
-  else return <PostForm action={handleSubmit} actionText="Edit Post" title={post.title} author={post.author} publishedDate={post.publishedDate} content={post.content}></PostForm>;
+  else return <PostForm action={handleSubmit} actionText="Edit Post" title={post.title} author={post.author} publishedDate={post.publishedDate} content={post.content} category={post.category}></PostForm>;
 };
 
 export default EditPostForm;
