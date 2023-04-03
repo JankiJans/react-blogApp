@@ -3,7 +3,7 @@ import { ListGroup, Col, Row } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { getCategories } from '../../../redux/categoriesRedux';
 import { useParams } from 'react-router-dom';
-import PostList from '../../Features/PostList';
+import CategoryPostList from '../../Features/CategoryPostList';
 
 const CategoryPage = () => {
   const { category } = useParams();
@@ -18,10 +18,10 @@ const CategoryPage = () => {
     <div>
       <header className="d-flex justify-content-between">
         <h1>Categories</h1>
-        <h1>Selected Category: {selectedCategory}</h1>
+        <h1>Selected Category: <span>{selectedCategory}</span></h1>
       </header>
       <Row>
-        <Col>
+        <Col className="mt-3">
           <ListGroup>
             {categories.map((categoryItem) => (
               <ListGroup.Item key={categoryItem}>
@@ -34,7 +34,7 @@ const CategoryPage = () => {
         </Col>
         <Col xs={6} md={6} lg={6}>
           <div> 
-            <PostList category={selectedCategory} />
+            <CategoryPostList category={selectedCategory} />
           </div>
         </Col>
       </Row>
