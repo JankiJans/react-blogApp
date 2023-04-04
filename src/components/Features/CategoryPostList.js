@@ -9,7 +9,7 @@ import { postsByCategory } from '../../redux/categoriesRedux';
     <Row>
       {posts.map((post) => (
         <Col key={post.id} className="my-3">
-          <Card>
+          <Card style={{ height: '100%'}}>
             <Card.Body>
               <Card.Title>{post.title}</Card.Title>
               <Card.Subtitle className="mb-2 text-muted">{post.publishedDate}</Card.Subtitle>
